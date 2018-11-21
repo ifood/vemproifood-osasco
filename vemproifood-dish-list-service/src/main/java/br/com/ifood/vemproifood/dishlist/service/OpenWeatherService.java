@@ -18,12 +18,12 @@ final class OpenWeatherService {
 
   @Resource
   private RestTemplate restTemplate;
+
   @Value("${openweathermap.api.key}")
   private String apiKey;
 
 
-  public double retrieveCurrentTemperatureByCoordinates(final double latitude,
-      final double longitude) {
+  public double retrieveCurrentTemperatureByCoordinates(final double latitude, final double longitude) {
     final ResponseEntity<OpenWeatherMapResponse> weatherDataResponse = restTemplate.getForEntity(
         WEATHER_URL + "?units=metric&lat={latitude}&lon={longitude}&APPID={apiKey}",
         OpenWeatherMapResponse.class,
