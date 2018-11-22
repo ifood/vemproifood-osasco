@@ -20,6 +20,21 @@ services:
 
     entrypoint: java -Djava.security.egd=file:/dev/./urandom -jar /app.jar
 # ===================================================================
+  dish-list-service:
+    container_name: dish-menu-service
+    hostname: dish-menu-service
+
+    build:
+      context: ../vemproifood-dish-menu-service/
+      dockerfile: ../vemproifood-dish-menu-service/.docker/build-local.dockerfile
+    ports:
+      - "3000:3000"
+    working_dir: /opt
+    networks:
+      - app-private-network
+
+    entrypoint: yarn start
+# ===================================================================
 networks:
   app-private-network:
     driver: bridge

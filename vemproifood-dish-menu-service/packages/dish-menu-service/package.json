@@ -1,0 +1,13 @@
+{
+  "name": "@vemproifood/dish-menu-service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "fast-csv": "^2.4.1"
+  }
+}
