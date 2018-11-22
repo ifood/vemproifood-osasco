@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "name": "vemproifood-dish-menu-service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "workspaces": [ "packages/*" ]
+}
