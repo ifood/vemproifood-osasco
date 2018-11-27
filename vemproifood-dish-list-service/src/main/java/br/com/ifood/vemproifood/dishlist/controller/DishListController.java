@@ -1,9 +1,7 @@
 package br.com.ifood.vemproifood.dishlist.controller;
 
-import br.com.ifood.vemproifood.dishlist.model.Dish;
 import br.com.ifood.vemproifood.dishlist.model.exception.InvalidCoordinatesException;
 import br.com.ifood.vemproifood.dishlist.service.DishListService;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
