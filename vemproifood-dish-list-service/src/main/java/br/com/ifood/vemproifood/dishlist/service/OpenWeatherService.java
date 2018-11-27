@@ -31,6 +31,8 @@ final class OpenWeatherService {
             "latitude", latitude,
             "longitude", longitude,
             "apiKey", apiKey));
+    	System.out.println("Open");
+    	System.out.println(weatherDataResponse);
     return weatherDataResponse.getBody().getMain().getTemp();
   }
 

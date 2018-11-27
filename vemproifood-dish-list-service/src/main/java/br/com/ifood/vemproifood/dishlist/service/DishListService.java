@@ -18,14 +18,14 @@ public class DishListService {
 		this.weatherRetriever = openWeatherService;
 	}
 
-	public List<Dish> getDishListByCoordinates(Double lat, Double lon){
+	public Object getDishListByCoordinates(Double lat, Double lon){
 		Double temperature = this.weatherRetriever.retrieveCurrentTemperatureByCoordinates(lat, lon);
 
 		/*
 		 * ... to be continued
 		 */
 
-		return new LinkedList<>();
+		return temperature;
 	}
 
 }

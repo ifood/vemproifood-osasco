@@ -26,7 +26,7 @@ public class DishListController {
 
 
 	@RequestMapping(path = "{latitude}/{longitude}", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
-	ResponseEntity<List<Dish>> getDishListByCoordinates(
+	ResponseEntity <Object> getDishListByCoordinates(
 			@PathVariable(name = "latitude")
 			final double latitude,
 			@PathVariable(name = "longitude")
@@ -35,6 +35,6 @@ public class DishListController {
 		if( latitude > 90 || latitude < -90 ) throw new InvalidCoordinatesException(latitude);
 		if( longitude > 180 || longitude < -180 ) throw new InvalidCoordinatesException(longitude);
 
-		return ResponseEntity.ok(dishListService.getDishListByCoordinates(latitude, longitude));
+		return ResponseEntity.ok(getDishListByCoordinates(latitude, longitude));
 	}
 }
