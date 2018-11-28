@@ -6,37 +6,22 @@ Maps API Key `AIzaSyDdXLUyZosLC8fQftguJ-F953J_ANTQQ5A`
 
 ## Contratos da API
 
-`/dish-list/:lat/:lon`
-Recupera uma lista de pratos com base nos dados de lat/long enviados pelo aplicativo.
+`/spotify/coordinates/:lat/:lon`
+Realiza a indicação de musicas pelo clima da codernada
 
 Parametros:
 - :lat - latitude
 - :lon - longitude
 
 Retorna:
-- Array com os nomes dos pratos desse tipo de cozinha
+- Array com as tracks
 
-Exemplo:
-```
-[
-    "Pizza de mussarela",
-    "Hamburger simples"
-]
-```
 
-`/dish-detail/:dish`
-Recupera os detalhes de um determinado prato
+`/spotify/city/:city`
+Realiza a indicação de musicas pelo clima da cidade
 
 Parametros:
-- :dish - nome do prato
+- :city - nome da cidade
 
 Retorna:
-Um objeto contendo o nome do restaurante daquele prato e o nome do prato
-
-Exemplo:
-```
-{
-    restaurant: "Pizza Hut Limao",
-    dish: "Pizza Supreme"
-}
-```
+- Array com as tracks
