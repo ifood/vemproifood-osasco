@@ -1,18 +1,15 @@
-package br.com.ifood.vemproifood.dishlist.controller;
+package br.com.ifood.vemproifood.dishlist.service;
 
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-import br.com.ifood.vemproifood.dishlist.controller.OpenWeatherController;
-import java.util.Map;
-
 
 @RestController
 @RequestMapping(path = "spotify")
-public class SpotifyToken {
+public class SpotifyService {
 
 	public static String SPOTIFY_URL = "https://api.spotify.com/v1/recommendations?seed_genres=";
-	public static String accessToken = "BQDs0Kb7363YoyVMJ9GVsfxM4E8jQbgePHrkkO2H_Zy8TojQuAE1opIZgPnkXpVBY49JdPNCV2ElsE5YhF4";
+	public static String accessToken = new SpotifyGetTokenService().getSpotifyToken();
 	
 	
 	public String getGenres(Double temperatura) {
@@ -36,23 +33,23 @@ public class SpotifyToken {
 	}
 	
 	@GetMapping(path = "/coordinates/{latitude}/{longitude}")
-	public Map suggestTrackByCoordinates(@PathVariable Double latitude, @PathVariable Double longitude) {
-		double tempByCoordinates = new OpenWeatherController().retrieveCurrentTemperatureByCoordinates(latitude, longitude);
+	public Object suggestTrackByCoordinates(@PathVariable Double latitude, @PathVariable Double longitude) {
+		double tempByCoordinates = new OpenWeatherService().retrieveCurrentTemperatureByCoordinates(latitude, longitude);
 		String url = SPOTIFY_URL + getGenres(tempByCoordinates);
 		RestTemplate restTemplate = new RestTemplate();
 		HttpEntity<String> entity = new HttpEntity<String>(createHeaders());
-		ResponseEntity<Map> response = restTemplate.exchange(url, HttpMethod.GET, entity, Map.class);
+		ResponseEntity<Object> response = restTemplate.exchange(url, HttpMethod.GET, entity, Object.class);
 		return response.getBody();
 	}
 	
 	@GetMapping(path = "/city/{city}")
-	public Map suggestTrackByCity(@PathVariable String city) {
-		double tempByCity = new OpenWeatherController().retrieveCurrentTemperatureByCity(city);
+	public Object suggestTrackByCity(@PathVariable String city) {
+		double tempByCity = new OpenWeatherService().retrieveCurrentTemperatureByCity(city);
 		String url = SPOTIFY_URL + getGenres(tempByCity);
 		
 		RestTemplate restTemplateByCity = new RestTemplate();
 		HttpEntity<String> entity = new HttpEntity<String>(createHeaders());
-		ResponseEntity<Map> response = restTemplateByCity.exchange(url, HttpMethod.GET, entity, Map.class);
+		ResponseEntity<Object> response = restTemplateByCity.exchange(url, HttpMethod.GET, entity, Object.class);
 		return response.getBody();
 	}
 

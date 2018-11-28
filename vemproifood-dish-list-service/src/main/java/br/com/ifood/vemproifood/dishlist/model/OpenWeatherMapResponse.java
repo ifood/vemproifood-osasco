@@ -11,7 +11,8 @@ public class OpenWeatherMapResponse {
 	static OpenWeatherMapResponse withTemperature(final double temperature) {
 		final OpenWeatherMapResponse response = new OpenWeatherMapResponse();
 		response.main = new MainInformations();
-		response.main.temp = temperature;
+		response.main.temp = temperature;	
+		
 		return response;
 	}
 
